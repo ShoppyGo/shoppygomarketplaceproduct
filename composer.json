@@ -1,0 +1,26 @@
+{
+  "name": "shoppygomarketplaceproduct/shoppygomarketplaceproduct",
+  "description": "Add info detail to product",
+  "homepage": "https://www.shoppygo.io",
+  "license": "AFL-3.0",
+  "type": "prestashop-module",
+  "authors": [
+    {
+      "name": "ShoppyGo",
+      "email": "contact@shoppygo.io"
+    }
+  ],
+  "minimum-stability": "stable",
+  "config": {
+    "preferred-install": "dist",
+    "prepend-autoloader": false
+  },
+  "autoload": {
+    "psr-4": {
+      "ShoppyGo\\MarketplaceProduct\\": "src/"
+    },
+    "config": {
+      "prepend-autoloader": false
+    }
+  }
+}

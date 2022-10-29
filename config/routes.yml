@@ -1,0 +1,5 @@
+admin_shoppygomarketplaceproduct_configuration:
+  path: '/shoppygomarketplaceproduct/configuration'
+  methods: [GET,POST]
+  defaults:
+    _controller: ShoppyGo\MarketplaceProduct\Controller\ConfigurationController::configuration
