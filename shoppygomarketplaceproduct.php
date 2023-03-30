@@ -44,7 +44,7 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
         $this->name = 'shoppygomarketplaceproduct';
         $this->version = '1.0.0';
 
-        $this->author = 'Your name'; //TODO edit
+        $this->author = 'ShoppyGo';
         $this->need_instance = 0;
 
         /**
@@ -54,13 +54,11 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
 
         parent::__construct();
 
-        //TODO: Edit  'module name here'
-        $this->displayName = $this->trans('module name here', [], 'Modules.Shoppygomarketplaceproduct.Admin');
-        //TODO: Edit  ''description here'
-        $this->description = $this->trans('description here', [], 'Modules.Shoppygomarketplaceproduct.Admin');
+        $this->displayName = $this->trans('Display seller name', [], 'Modules.Shoppygomarketplaceproduct.Admin');
+        $this->description = $this->trans('Widget to display names of sellers', [], 'Modules.Shoppygomarketplaceproduct.Admin');
         $this->confirmUninstall = $this->trans('Are you sure?', [], 'Modules.Shoppygomarketplaceproduct.Admin');
 
-        $this->ps_versions_compliancy = array('min' => '1.7', 'max' => _PS_VERSION_);
+        $this->ps_versions_compliancy = array('min' => '8.0.0', 'max' => _PS_VERSION_);
     }
 
     public function getContent()
@@ -92,7 +90,7 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
 
     public function renderWidget($hookName, array $configuration)
     {
-        $key = 'ps_linklist|'.$hookName;
+        $key = $this->name.'|'.$hookName;
 
         $sellers = $this->getWidgetVariables($hookName, $configuration);
 
