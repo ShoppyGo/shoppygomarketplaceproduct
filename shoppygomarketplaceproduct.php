@@ -55,7 +55,8 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
         parent::__construct();
 
         $this->displayName = $this->trans('Display seller name', [], 'Modules.Shoppygomarketplaceproduct.Admin');
-        $this->description = $this->trans('Widget to display names of sellers', [], 'Modules.Shoppygomarketplaceproduct.Admin');
+        $this->description =
+            $this->trans('Widget to display names of sellers', [], 'Modules.Shoppygomarketplaceproduct.Admin');
         $this->confirmUninstall = $this->trans('Are you sure?', [], 'Modules.Shoppygomarketplaceproduct.Admin');
 
         $this->ps_versions_compliancy = array('min' => '8.0.0', 'max' => _PS_VERSION_);
@@ -77,8 +78,12 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
         $seller_ids = $mkt->findSellerByProduct($id_product);
         $sellers = array();
         foreach ($seller_ids as $seller_id) {
-            $sellers[] =['seller'=> new \Supplier($seller_id), 'seller_page' => $this->context->link->getSupplierLink(
-                $seller_id)];
+            $sellers[] = [
+                'seller' => new \Supplier($seller_id),
+                'seller_page' => $this->context->link->getSupplierLink(
+                    $seller_id
+                ),
+            ];
         }
 
         return $sellers;
@@ -96,6 +101,9 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
         $sellers = $this->getWidgetVariables($hookName, $configuration);
 
         if ('displaySellerProductDetail' === $hookName) {
+            if ($this->context->controller->php_self === 'supplier') {
+                return;
+            }
             $template = 'module:shoppygomarketplaceproduct/views/templates/hook/sellers.tpl';
 
             if (!$this->isCached($template, $this->getCacheId($key))) {
