@@ -77,7 +77,8 @@ class Shoppygomarketplaceproduct extends Module implements WidgetInterface
         $seller_ids = $mkt->findSellerByProduct($id_product);
         $sellers = array();
         foreach ($seller_ids as $seller_id) {
-            $sellers[] = new \Supplier($seller_id);
+            $sellers[] =['seller'=> new \Supplier($seller_id), 'seller_page' => $this->context->link->getSupplierLink(
+                $seller_id)];
         }
 
         return $sellers;
