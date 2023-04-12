@@ -1,4 +1,4 @@
-<strong> Il prodotto è venduto da:</strong>
+<strong>{l s="Product sold and shipped from" d="Modules.Shoppygomarketplaceproduct.Shop"}</strong>
 <ul>
 
     {foreach from=$sellers item=row}
